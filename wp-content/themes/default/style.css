@@ -1,0 +1,98 @@
+/*
+Theme Name: GIN System
+Theme URI: http://ginsystem.com
+Author: Zane Hooper & Anne Grundhoefer
+Author URI: http://zanehooper.com
+Description: GIN System's WordPress theme
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: 
+Text Domain: ginsystem
+*/
+/*! Copyright GIN System (ginsystem.com) | By Zane Hooper (zanehooper.com) */
+
+.wrap.pink {
+	background: #e45f56;
+}
+
+h1, h2, h4, h5, h6 {
+	color: #35404f;
+}
+
+h3 {
+	color: #6cc;
+}
+
+.wrap.pink h2 {
+	color: #fff;
+}
+
+.wrap.teal {
+	background: #7accc8;
+}
+
+footer {
+	background: #35404f;
+}
+
+.partners a {
+	color: #fff;
+}
+
+.testimonials>blockquote {
+	float: left;
+	padding: 24px 12px 62px 30px;
+	width: 480px;
+	height: 100px;
+	background: url('images/quote.png') no-repeat 150px 12px;
+	color: #fff;
+	margin: 0;
+	font-family: 'museo-slab', serif;
+}
+
+.testimonials>blockquote>div {
+	width: 333px;
+	float: left;
+}
+
+.testimonials img {
+	display: block;
+	float: left;
+	width: 77px;
+	border-radius: 100%;
+	margin: 0 30px;
+}
+
+.testimonials i {
+	font-size: 13px;
+}
+
+.icons {
+	background: url('images/banners/home-icons-bg.png') no-repeat top center #f7f6f5;
+	text-align: center;
+	color: #35404f;
+}
+
+.icons .icon-col {
+	display: inline-block;
+	width: 290px;
+}
+
+.icons .top {
+	padding: 90px 0 0 0;
+	height: 250px;
+}
+
+.icons h1 {
+	font-size: 45px;
+}
+
+.icons h2 {
+	font-weight: normal;
+	font-family: 'museo-sans', sans-serif;
+}
+
+.icons h4 {
+	font-size: 19px;
+}
