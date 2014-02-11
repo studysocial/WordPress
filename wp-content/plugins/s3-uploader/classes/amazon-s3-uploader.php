@@ -33,8 +33,11 @@ class Amazon_S3_Uploader extends AWS_Plugin_Base {
 				if (substr($data['url'], 0, 2) == '//')
 					$data['url'] = 'http:' . $data['url'];
 
-				if (substr($data['url'], 0, 5) == '/tmp/')
-					$data['url'] = get_the_guid( $id ) . '?test';
+				if (substr($data['url'], 0, 5) == '/tmp/') {
+					global $wpdb;
+					$post = mysql_fetch_array(mysql_query("SELECT guid FROM $wpdb->posts WHERE ID = '$id' LIMIT 1"));
+					$data['url'] = $post['guid'] . '?test2';
+				}
 
 				die(json_encode(array(
 					'success' => true,
