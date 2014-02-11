@@ -99,7 +99,7 @@ jQuery(document).ready(function($){
 		var action = document.getElementById("send-link-form")['action'].value;
 		
 		$.ajax({
-			url: '/wp-content/plugins/SMS.php',
+			url: '/wp-content/plugins/SMS/SMS.php',
 			type: 'POST',
 			dataType: 'html',
 			data: {"phone_num" : phone_num, "action" : action},

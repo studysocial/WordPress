@@ -75,19 +75,6 @@ define('WPLANG', '');
 /** For security */
 define('DISALLOW_FILE_EDIT', true);
 
-/** SMTP Setup */
-define('WPMS_ON', true);
-define('WPMS_MAIL_FROM', 'support@ginsystem.com');
-define('WPMS_MAIL_FROM_NAME', 'Gin System Support');
-define('WPMS_MAILER', 'smtp'); // Possible values 'smtp', 'mail', or 'sendmail'
-define('WPMS_SET_RETURN_PATH', 'false'); // Sets $phpmailer->Sender if true
-define('WPMS_SMTP_HOST', 'smtp.sendgrid.net'); // The SMTP mail host
-define('WPMS_SMTP_PORT', 25); // The SMTP server port number
-define('WPMS_SSL', ''); // Possible values '', 'ssl', 'tls' - note TLS is not STARTTLS
-define('WPMS_SMTP_AUTH', true); // True turns on SMTP authentication, false turns it off
-define('WPMS_SMTP_USER', 'GinSystem'); // SMTP authentication username, only used if WPMS_SMTP_AUTH is true
-define('WPMS_SMTP_PASS', 'smtpGin!!'); // SMTP authentication password, only used if WPMS_SMTP_AUTH is true
-
 /**
  * Include necessary config files
  */
