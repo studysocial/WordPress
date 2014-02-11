@@ -28,6 +28,17 @@ class Amazon_S3_Uploader extends AWS_Plugin_Base {
 				die('That file is not allowed: ' . $file_info . '. Hit back to try again.');
 			$id = $this->file_upload($file_info, intval($_POST['post_id']));
 			
+			if ($_POST['action'] == 'upload-attachment') {
+				$data = wp_prepare_attachment_for_js($id);
+				if (substr($data['url'], 0, 2) == '//')
+					$data['url'] = 'http:' . $data['url'];
+
+				die(json_encode(array(
+					'success' => true,
+					'data' => $data,
+				)));
+			}
+			
 			if (empty($_POST['html-upload']))
 				die('' . $id);
 			
