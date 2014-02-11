@@ -32,7 +32,7 @@ $path = get_path();
 <html class="ie ie8" <?php language_attributes(); ?>>
 <![endif]-->
 <!--[if !(IE 7) | !(IE 8)  ]><!-->
-<html <?php language_attributes(); ?> class="<?php echo $nav->getActive() . (isset($current_blog->path) ? ' ' . $current_blog->path : '') ?>">
+<html <?php language_attributes(); ?> class="<?php echo $nav->getActive() . (isset($current_blog->path) ? ' ' . str_replace('/', '', $current_blog->path) : '') ?>">
 <!--<![endif]-->
 <head>
 	<meta charset="<?php bloginfo('charset') ?>">
