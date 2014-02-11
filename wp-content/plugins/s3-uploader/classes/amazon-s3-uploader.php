@@ -30,14 +30,15 @@ class Amazon_S3_Uploader extends AWS_Plugin_Base {
 			
 			if ($_POST['action'] == 'upload-attachment') {
 				$data = wp_prepare_attachment_for_js($id);
-				if (substr($data['url'], 0, 2) == '//')
-					$data['url'] = 'http:' . $data['url'];
 
 				if (substr($data['url'], 0, 5) == '/tmp/') {
 					global $wpdb;
 					$post = mysql_fetch_array(mysql_query("SELECT guid FROM $wpdb->posts WHERE ID = '$id' LIMIT 1"));
-					$data['url'] = $post['guid'] . '?test2';
+					$data['url'] = $post['guid'];
 				}
+
+				if (substr($data['url'], 0, 2) == '//')
+					$data['url'] = 'http:' . $data['url'];
 
 				die(json_encode(array(
 					'success' => true,
