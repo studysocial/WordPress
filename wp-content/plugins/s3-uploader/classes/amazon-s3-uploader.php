@@ -33,6 +33,9 @@ class Amazon_S3_Uploader extends AWS_Plugin_Base {
 				if (substr($data['url'], 0, 2) == '//')
 					$data['url'] = 'http:' . $data['url'];
 
+				if (substr($data['url'], 0, 5) == '/tmp/')
+					$data['url'] = get_the_guid( $id ) . '?test';
+
 				die(json_encode(array(
 					'success' => true,
 					'data' => $data,

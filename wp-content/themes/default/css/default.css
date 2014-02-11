@@ -113,7 +113,7 @@ small {
 	line-height: 14px;
 }
 
-.btn, .prices .col-3, .list a {
+.btn, .list a {
 	transition: all .5s;
 	-moz-transition: all .5s;
 	-webkit-transition: all .5s;
@@ -307,11 +307,6 @@ h2.blue {
 
 .big-image:hover .overlay {
 	background: rgba(29, 168, 212, 0.15);
-}
-
-.about h2, .parents h2, .class h2 {
-	font-size: 21px;
-	line-height: 25px;
 }
 
 .border {
