@@ -26,19 +26,22 @@ class Amazon_S3_Uploader extends AWS_Plugin_Base {
 			$file = $_FILES['async-upload'];
 			if (!is_array($file_info = $this->file_info($file)))
 				die('That file is not allowed: ' . $file_info . '. Hit back to try again.');
-			$id = $this->file_upload($file_info, intval($_POST['post_id']));
+			$upload = $this->file_upload($file_info, intval($_POST['post_id']));
 			
 			if ($_POST['action'] == 'upload-attachment') {
-				$data = wp_prepare_attachment_for_js($id);
+				$data = wp_prepare_attachment_for_js($upload['id']);
 
-				if (substr($data['url'], 0, 5) == '/tmp/') {
-					global $wpdb;
-					$post = mysql_fetch_array(mysql_query("SELECT guid FROM $wpdb->posts WHERE ID = '$id' LIMIT 1"));
-					$data['url'] = $post['guid'];
-				}
+				if (substr($data['url'], 0, 5) == '/tmp/')
+					$data['url'] = $upload['file'];
 
 				if (substr($data['url'], 0, 2) == '//')
 					$data['url'] = 'http:' . $data['url'];
+
+				foreach ($upload['sizes'] as $key => $info) {
+					$data['sizes'][$key]['url'] = $upload['prefix'] . $info['file'];
+				}
+
+				$data['sizes']['full']['url'] = $data['url'];
 
 				die(json_encode(array(
 					'success' => true,
@@ -47,7 +50,7 @@ class Amazon_S3_Uploader extends AWS_Plugin_Base {
 			}
 			
 			if (empty($_POST['html-upload']))
-				die('' . $id);
+				die('' . $data['id']);
 			
 			header("Location: upload.php");
 			die('');
@@ -144,8 +147,9 @@ class Amazon_S3_Uploader extends AWS_Plugin_Base {
 		}
 
 		wp_update_attachment_metadata($id, $data);
-		
-		return $id;
+		$data['prefix'] = $full_prefix;
+		$data['id'] = $id;
+		return $data;
 	}
 
 	function get_setting ($key) {
